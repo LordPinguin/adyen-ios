@@ -16,8 +16,7 @@ internal final class ComponentManager {
     // MARK: - Internal
     
     internal lazy var components: SectionedComponents = {
-        // Filter out payment methods without the Ecommerce shopper interaction.
-        let storedPaymentMethods = paymentMethods.stored.filter { $0.supportedShopperInteractions.contains(.shopperPresent) }
+        let storedPaymentMethods = paymentMethods.stored
         
         return SectionedComponents(
             stored: storedPaymentMethods.compactMap { component(for: $0) },
